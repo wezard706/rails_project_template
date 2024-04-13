@@ -12,17 +12,18 @@ services:
     volumes:
       - .:/app
       - bundle:/usr/local/bundle
+    command: ["bin/rails", "server", "-b", "0.0.0.0"]
     depends_on:
       - db
   db:
     image: mysql/mysql-server:8.0.32
     environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
       MYSQL_ROOT_HOST: "%"
     volumes:
       - mysql:/var/lib/mysql
     ports:
-      - 3306
+      - 3306:3306
 volumes:
   bundle:
   mysql:
