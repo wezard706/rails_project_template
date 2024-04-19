@@ -7,3 +7,6 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+["集英社", "講談社", "KADOKAWA"].each do |name|
+  Publisher.find_or_create_by!(name:)
+end
