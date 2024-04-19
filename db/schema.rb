@@ -10,25 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_19_000314) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_19_134416) do
   create_table "books", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title", null: false
-    t.string "author", null: false
-    t.text "description"
-    t.integer "price"
-    t.bigint "publisher_id"
-    t.bigint "{:foreign_key=>true}_id"
-    t.date "published_on"
+    t.string "description"
+    t.integer "price", null: false
+    t.bigint "publisher_id", null: false
+    t.date "published_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["publisher_id"], name: "index_books_on_publisher_id"
-    t.index ["{:foreign_key=>true}_id"], name: "index_books_on_{:foreign_key=>true}_id"
   end
 
   create_table "publishers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "books", "publishers"
 end
