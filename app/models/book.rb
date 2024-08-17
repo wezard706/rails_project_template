@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: books
+#
+#  id           :bigint           not null, primary key
+#  title        :string(255)      not null
+#  description  :string(255)
+#  price        :integer          not null
+#  publisher_id :bigint           not null
+#  published_at :date
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
 class Book < ApplicationRecord
   belongs_to :publisher
   has_many :author_books
